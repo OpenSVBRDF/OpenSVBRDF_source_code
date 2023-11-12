@@ -122,3 +122,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+camera_related/
+device_configuration/
+mesh_processing/
+TextureGenerator_proj/
+list.py
+samples.json
+test.json
+texture_maps.py
+train.json
