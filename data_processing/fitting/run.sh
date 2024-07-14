@@ -5,10 +5,10 @@ do
     name=$class_name$formatted_variable
     tex_resolution=1024
 
-    data_root=../../../$name/output/
-    save_root=../../../$name/output/texture_maps/
+    data_root=../../database_data/$name/output/
+    save_root=../../database_data/$name/output/texture_maps/
     config_dir=../torch_renderer/wallet_of_torch_renderer/lightstage/
-    model_file=../../../database_model/latent_48_24_500000_2437925.pkl
+    model_file=../../database_model/latent_48_24_500000_2437925.pkl
     train_device="cuda:0"
     python fit_latent.py $class_name $data_root $save_root --train_device $train_device --config_dir $config_dir --model_file $model_file
 

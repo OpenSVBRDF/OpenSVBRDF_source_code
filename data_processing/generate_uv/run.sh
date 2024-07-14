@@ -1,13 +1,13 @@
 for variable in 18
 do
-    root=../../../database_data/
+    root=../../database_data/
     class_name=paper
 
     formatted_variable=$(printf "%04d" $variable)
     data_root=$root$class_name$formatted_variable/
 
     save_root=output/
-    config_dir=../../device_configuration/
+    config_dir=../device_configuration/
 
     cam_num=2
     main_cam_id=0
