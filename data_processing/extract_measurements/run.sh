@@ -2,7 +2,7 @@ for variable in 18
 do
     class_name=paper
     formatted_variable=$(printf "%04d" $variable)
-    data_root=../../../"$class_name""$formatted_variable"/
+    data_root=../../database_data/"$class_name""$formatted_variable"/
     
     dir_name=raw_images
 
@@ -11,10 +11,10 @@ do
     main_cam_id=0
     texture_resolution=1024
 
-    save_root=../../../$class_name"$formatted_variable"/output/texture_"$texture_resolution"/
+    save_root=../../database_data/$class_name"$formatted_variable"/output/texture_"$texture_resolution"/
 
-    model_path=../../../database_model/
-    config_dir=../../device_configuration/
+    model_path=../../database_model/
+    config_dir=../device_configuration/
 
     need_undistort=true
     color_check=true

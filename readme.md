@@ -1,9 +1,54 @@
-We have already made the texture maps available on our [database portal](https://opensvbrdf.github.io/). Here, we attach the calculation method of the GGX anisotropic BRDF used in our entire system, for everyone to use as a reference when rendering data.
+# OpenSVBRDF: A Database of Measured Spatially-Varying Reflectance
 
+This is the source code for our paper accepted at Siggraph Asia 2023. 
 
-First, a local coordinate system (onb) for rendering is established based on the normal and tangent. Then, $\omega_{i}$, $\omega_{o}$, onb, and other parameters are used as inputs to call the GGX_BRDF.eval() method, which will return the BRDF value. 
+![Teaser Image](assets/sorted_teaser_new.jpg)
 
-Our implementation references the formulas in the article [Physically-based shading at Disney](https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf).
+The database is available at [OpenSVBRDF](https://opensvbrdf.github.io/). Currently, all texture maps are available for download. Due to the large data volume, we are still looking for storage solutions for the neural representations and raw capture images. Currently, we provide the raw images of two samples for users to run this code and reproduce the results of the paper.
 
+## Data
 
-The rest of the code is currently being organized and will be coming soon. If you’re interested in our project, we warmly welcome you to star our repository. This will make it easier for you to find our updates in the future.
+We offer an anisotropic satin sample and an isotropic greeting card sample composed of various materials to test the results comprehensively. Download [paper0018](https://example.com/paper0018) and [satin0002](https://example.com/satin0002) and place the data folders in the `database_data` folder.
+
+## Model
+
+Download the [model](https://drive.google.com/file/d/1px3Ij1B7GIESWhAAm0-MHOhwR6yjWaVB/view?usp=drive_link) and place its contents in the `database_model/` folder.
+
+## Device Configuration
+
+Download the [device configuration files](https://drive.google.com/file/d/1dIqEQcImBUaTGfsy0SVb8S6Pjua5u317/view?usp=drive_link) and place its contents in the `data_processing/` folder as `device_configuration/`.
+
+## Running Steps
+
+1. Create a new environment and install the packages listed in `requirements.txt`.
+2. Before running each command, confirm the sample name you want to process. The output of each step will be saved in the `output/` folder.
+
+### Step-by-Step Instructions
+
+1. `cd generate_uv/` and run `run.sh` to automatically determine the final texture map area from masks and captured photos.
+2. `cd parallel-patchmatch-master/` and run `run.sh` to align photos from two cameras using dense patchmatch, finding corresponding pixel positions in the secondary camera for each pixel in the primary camera.
+3. `cd extract_measurements/` and run `run.sh` to extract all measurement values for each pixel in the texture map from each photo.
+4. `cd finetune/` and run `run.sh` to infer the neural representations and perform the three finetune steps described in the paper.
+5. `cd fitting/` and run `run.sh` to fit the neural representation into 6D PBR texture maps ready for rendering.
+6. `cd visualize_results` and run `run.sh` to render the neural representations and PBR texture maps, compute SSIM, and visualize MSE error against real photos for result validation.
+
+After completing these steps, you can view the reconstructed results in the `output/render/` folder within the sample directory.
+
+## License
+
+This code is licensed under GPL-3.0. If you use our data or code in your work, please cite our paper:
+
+```
+@article{ma2023opensvbrdf,
+  title={OpenSVBRDF: A Database of Measured Spatially-Varying Reflectance},
+  author={Ma, Xiaohe and Xu, Xianmin and Zhang, Leyao and Zhou, Kun and Wu, Hongzhi},
+  journal={ACM Transactions on Graphics (TOG)},
+  volume={42},
+  number={6},
+  pages={1--14},
+  year={2023},
+  publisher={ACM New York, NY, USA}
+}
+```
+
+We also acknowledge the use of code from [SIFT-Flow-GPU](https://github.com/hmorimitsu/sift-flow-gpu) for camera alignment.

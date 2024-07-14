@@ -4,7 +4,7 @@ do
     class_name=paper
 
     formatted_variable=$(printf "%04d" $variable)
-    data_root=../../../database_data/"$class_name""$formatted_variable"/
+    data_root=../../database_data/"$class_name""$formatted_variable"/
 
     texture_resolution=1024
     save_root=output/texture_"$texture_resolution"/
