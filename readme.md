@@ -8,7 +8,7 @@ The database is available at [OpenSVBRDF](https://opensvbrdf.github.io/). Curren
 
 ## Data
 
-We offer an anisotropic satin sample and an isotropic greeting card sample composed of various materials to test the results comprehensively. Download [paper0018](https://example.com/paper0018) and [satin0002](https://example.com/satin0002) and place the data folders in the `database_data` folder.
+We offer an anisotropic satin sample and an isotropic greeting card sample composed of various materials to test the results comprehensively. Download [paper0018](https://drive.google.com/file/d/1PBhkDUvGb9goTIzc_9HxCAtOB72KGw9K/view?usp=sharing) and [satin0002](https://drive.google.com/file/d/1tKWYCvvX073X8HIgc2kjC8_QoGUM5QVP/view?usp=sharing) and place the data folders in the `database_data` folder.
 
 ## Model
 
