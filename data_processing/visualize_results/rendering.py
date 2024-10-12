@@ -160,10 +160,6 @@ if __name__ == "__main__":
         
         tmp_nn_lumi = tmp_nn_lumi.reshape([tmp_seq_size,3,-1]).permute(0,2,1)
         
-        if ptr % 20000 == 0:
-            lumi_img = torch_render.visualize_lumi(tmp_nn_lumi).cpu().numpy()
-            for i in range(1):
-                cv2.imwrite(args.save_root+f"{ptr+i}_latent.png",lumi_img[i,:,:,::-1]*255)
         
         tmp_measurements = torch.sum(lighting_patterns*tmp_nn_lumi.unsqueeze(dim=1),dim=2).reshape([tmp_seq_size,-1,3])
         latent_result[ptr:ptr+batch_size,:,:] = tmp_measurements

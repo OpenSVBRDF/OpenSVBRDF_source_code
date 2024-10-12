@@ -75,7 +75,7 @@ def parse_args():
     parser.add_argument("save_root",default="texture_maps/")
 
     parser.add_argument('--train_device', type=str, default="cuda:0")
-    parser.add_argument('--iter', type=int, default=120100)
+    parser.add_argument('--iter', type=int, default=120000)
     parser.add_argument("--main_cam_id",type=int,default=0)
     parser.add_argument("--tex_resolution",type=int,default=1024)
 
