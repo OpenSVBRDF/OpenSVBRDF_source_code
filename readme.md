@@ -42,7 +42,7 @@ After completing these steps, you can view the reconstructed results in the `out
 
 ### Running with Docker 
 
-1. Similar to the other appoach, confirm the sample name you want to process before running each command.
+1. Similar to the previous appoach, confirm the sample name you want to process before running each command.
 
 2. Create docker image at the root of the project
 
