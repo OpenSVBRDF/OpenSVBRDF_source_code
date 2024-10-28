@@ -20,10 +20,16 @@ Download the [device configuration files](https://drive.google.com/file/d/1dIqEQ
 
 ## Running Steps
 
-1. Create a new environment and install the packages listed in `requirements.txt`.
+We provide two approaches to run the code, you can choose any one you prefer.
+
+### Running with Conda
+
+1. Create a new environment and install the packages.
+
+    `conda env create -f environment.yml`
 2. Before running each command, confirm the sample name you want to process. The output of each step will be saved in the `output/` folder.
 
-### Step-by-Step Instructions
+#### Step-by-Step Instructions
 
 1. `cd generate_uv/` and run `run.sh` to automatically determine the final texture map area from masks and captured photos.
 2. `cd parallel-patchmatch-master/` and run `run.sh` to align photos from two cameras using dense patchmatch, finding corresponding pixel positions in the secondary camera for each pixel in the primary camera.
@@ -33,6 +39,23 @@ Download the [device configuration files](https://drive.google.com/file/d/1dIqEQ
 6. `cd visualize_results` and run `run.sh` to render the neural representations and PBR texture maps, compute SSIM, and visualize MSE error against real photos for result validation.
 
 After completing these steps, you can view the reconstructed results in the `output/render/` folder within the sample directory.
+
+### Running with Docker 
+
+1. Similar to the previous appoach, confirm the sample name you want to process before running each command.
+
+2. Create docker image at the root of the project
+
+    `docker build -t opensvbrdf .`
+
+3. Create docker container and enter it
+
+    `docker run -it --rm --gpus all -v ./database_data/:/app/database_data opensvbrdf`
+
+4. Run the code, and the output will be saved in the `database_data/sample_name/output/` folder
+
+    `bash /app/run.sh`
+
 
 ## License
 
