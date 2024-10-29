@@ -100,7 +100,7 @@ class SiftFlowTorch(object):
         self.descs = None
         self.grad_filter = None
         self.max_batch_size = 1
-        self.device = "cuda:3"
+        self.device = "cuda:0"
 
         self.filter = self._compute_filter()
 
